@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.scss">
+    <title>Word Cloud Generator</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="word-cloud" id="word-cloud">
+            <h2>Word Cloud Placeholder</h2>
+        </div>
+
+        <div class="input-area">
+            <textarea id="word-input" placeholder="Enter your text here..." rows="10"></textarea>
+
+            <div class="controls">
+                <div class="button-container">
+                    <button class='generate' id="generate">Generate</button>
+                    <button id="save-btn">Save</button>
+                    <!--<div class="popup-overlay" id="save-popupOverlay"></div>
+                      <div class="popup" id="popup">
+                          <span class="close" id="save-closePopup">&times;</span>
+                          <div class="popup-content">
+                              <button onclick="submitForm()">Save as PNG</button> -->
+                              <!-- add this as something other than popup? --> 
+                          <!--</div>
+                      </div>
+                    </div>-->
+                    <button id="import-btn">Import</button>
+                    <!--<div class="popup-overlay" id="import-popupOverlay"></div>
+                      <div class="popup" id="popup">
+                          <span class="close" id="import-closePopup">&times;</span>
+                          <div class="popup-content">
+                            <p>upload a document here to turn the words into a word cloud</p>
+                            <p>place holder for import system</p>-->
+                            <!--look into importing files?-->
+                              <!--<button onclick="submitForm()">Done</button>
+                          </div>
+                      </div>-->
+                    </div>
+                    <button id="settings-btn">Settings</button>
+                    <!--<div class="popup-overlay" id="setting-popupOverlay">
+                      <div class="popup" id="popup">
+                          <span class="close" id="setting-closePopup">&times;</span>
+                          <div class="popup-content">
+                              <p>Customization</p>
+                              <p>rotation</p>
+                              <p>font size</p>
+                              <p>word pacing</p>
+                              <button onclick="submitForm()">Done</button>
+                          </div>
+                      </div>
+                    </div>-->
+                </div>
+
+                <div class="word-selector">
+                    <label for="word-count">Select number of words:</label>
+                    <input type="range" id="word-count" min="1" max="1000" value="500" oninput="updateWordCount(this.value)">
+                    <span id="word-count-label">500</span>
+                </div>
+
+                <div class="color-picker">
+                    <button id="color-btn">Select Colors</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container">
+        <div class="modal">
+            <div class="title">Select Your Colors</div>
+            <div class="description">Select a colour pallet or individual colours below</div>
+    
+            <div class="color-boxes">
+                <div class="color-box" id="box1">
+                    <span>Light colour pallet</span>
+                    <button class="color-button" style="background-color: #1A0878;"></button>
+                    <button class="color-button" style="background-color: #5A1F9F;"></button>
+                    <button class="color-button" style="background-color: #FF4D27;"></button>
+                    <button class="color-button" style="background-color: #000000;"></button>
+                    <button class="color-button" style="background-color: #AA4BF5;"></button>
+                </div>
+                
+                <div class="color-box" id="box2">
+                    <span>Dark colour pallet</span>
+                    <button class="color-button" style="background-color: #C8DCE9;"></button>
+                    <button class="color-button" style="background-color: #AA4BF5;"></button>
+                    <button class="color-button" style="background-color: #FF885B;"></button>
+                    <button class="color-button" style="background-color: #FF4D27;"></button>
+                    <button class="color-button" style="background-color: #E3E3E3;"></button>
+                    <button class="color-button" style="background-color: #FFFFFF;"></button>
+                </div>
+    
+                <div class="color-box" id="box3">
+                    <span>Extra colours</span>
+                    <button class="color-button" style="background-color: #DF9403;"></button>
+                    <button class="color-button" style="background-color: #F0D702;"></button>
+                </div>
+            </div>
+    
+            <button class="done-button">Done</button>
+        </div>
+    </div>
+    <script src="counter.js"></script>
+</body>
+
+</html>
+
+
+
+
