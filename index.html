@@ -11,23 +11,39 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <button class="input-url">Input URL</button>
-            <textarea id="word-input" placeholder="Enter your text here..." rows="5"></textarea>
+            <div class="import">
+                <div class="import-method">
+                    <label>
+                        <input type="radio" name="import-method" class="input-url"> Import from web:
+                    </label>
+                    <textarea id="url" rows="3"></textarea>
+                </div>
+                <div class="import-method">
+                    <label>
+                        <input type="radio" name="import-method" class="upload-file"> Upload file:
+                    </label>
+                    <button>Browse</button>
+                    <textarea id="file" rows="3"></textarea>
+                </div>
+            </div>
 
+            <textarea id="word-input" placeholder="Enter your text here..." rows="7"></textarea>
+
+
+            
             <div class="color-palette">
-                <div class="palette">
-                    <span>Light Palette</span>
+                <div class="palette1">
+                    <span><input type="radio" name="palette"> Light</span>
                     <div class="color-options">
                         <div class="color-circle" style="background-color: #1A0878;"></div>
                         <div class="color-circle" style="background-color: #5A1F9F;"></div>
                         <div class="color-circle" style="background-color: #FF4D27;"></div>
                         <div class="color-circle" style="background-color: #000000;"></div>
                         <div class="color-circle" style="background-color: #AA4BF5;"></div>
-                        <div class="color-circle" style="background-color: #FFFFFF;"></div>
                     </div>
                 </div>
-                <div class="palette">
-                    <span>Dark Palette</span>
+                <div class="palette2">
+                    <span><input type="radio" name="palette"> Dark</span>
                     <div class="color-options">
                         <div class="color-circle" style="background-color: #C8DCE9;"></div>
                         <div class="color-circle" style="background-color: #AA4BF5;"></div>
@@ -36,51 +52,21 @@
                         <div class="color-circle" style="background-color: #E3E3E3;"></div>
                         <div class="color-circle" style="background-color: #FFFFFF;"></div>
                     </div>
-                </div>
+                </div>        
+            </div>    
+            <div class="max">
+               <label for="max-words">Max Words:</label>
+                <input type="number" id="max-words" min="1" max="1000" value="500">
             </div>
-
-            <div class="controls">
-                <label>
-                    <input type="checkbox"> Enable Feature
-                </label>
-                <div class="dropdown">
-                    <label for="font-size">Font Size:</label>
-                    <select id="font-size">
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
-                    </select>
-                </div>
-                <div class="rotate-buttons">
-                    <button class="rotate-left">Rotate Left</button>
-                    <button class="rotate-right">Rotate Right</button>
-                </div>
-                <div class="dropdown">
-                    <label for="word-spacing">Word Spacing:</label>
-                    <select id="word-spacing">
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
-                    </select>
-                </div>
+            <div class="generate">
+                <button id="generate">Generate</button>
             </div>
-        </div>
-
-        <div class="top-buttons">
-            <button id="generate">Generate</button>
-            <button id="download">Download</button>
         </div>
 
         <div class="main-content">
-            <h2>Word Cloud Example</h2>
             <div class="word-cloud" id="word-cloud">
                 <p>Word Cloud Placeholder</p>
             </div>
-        </div>
-       
-        <div class="bottom-right">
-            <label for="max-words">Max Words:</label>
-            <input type="number" id="max-words" min="1" max="1000" value="500">
         </div>
     </div>
     <script src="script.js"></script>
