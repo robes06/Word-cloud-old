@@ -31,9 +31,13 @@ body {
 
 textarea {
   width: 100%;
-  border: 1.4px solid #5A1F9F;
+  border: 1.4px dashed #5A1F9F;
   border-radius: 5px;
   padding: 10px;
+}
+
+.text {
+  height: 250px;
 }
 
 .import {
@@ -59,18 +63,24 @@ textarea {
   resize: none;
 }
 
+.import-method button {
+  width: 100%;
+  height: 40px;
+}
+
 .color-palette {
   display: flex;
   flex-direction: row;
-  gap: 25%;
+  gap: 10%;
   align-items: center;
+  margin-left: 25px;
 }
 
 .palette1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
+  padding: 15px;
   border: 1.4px solid #5A1F9F;
 }
 
@@ -80,7 +90,7 @@ textarea {
   gap: 10px;
   background-color: #000;
   color: #ffffff;
-  padding: 10px;
+  padding: 15px;
 }
 
 .color-options {
@@ -101,24 +111,43 @@ textarea {
   text-align: center;
   font-size: larger;
 }
+
+.rotation {
+  text-align: left;
+  font-size: larger;
+  padding: 10px;
+  border: 1.4px solid #5A1F9F;
+  border-radius: 5px;
+}
+
+.rotation-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.rotation-options label {
+  cursor: pointer;
+}
+
 .generate {
   margin-top: auto;
   text-align: center;
 }
 
 button {
-  background-color: #C8DCE9;
+  background-color: #AA4BF5;
   color: #000;
-  border: 1.5px solid #5A1F9F;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #AA4BF5;
+  background-color: #FF885B;
 }
 
 .main-content {
@@ -131,21 +160,11 @@ button:hover {
 }
 
 .word-cloud {
-  width: 100%;
-  height: 400px;
+  width: 95%;
+  height: 700px;
   border: 2px dashed #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-}
-
-@media only screen and (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-  }
-
-  .container {
-    flex-direction: column;
-  }
 }
