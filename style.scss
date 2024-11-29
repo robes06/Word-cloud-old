@@ -47,6 +47,13 @@ textarea {
   gap: 10px;
 }
 
+#my_dataviz {
+  display: none; /* Initially hidden */
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
 .word-import {
   resize: horizontal;
 }
