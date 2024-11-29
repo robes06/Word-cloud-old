@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  padding: 0;
+}
+
+.sidebar {
+  width: 30%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+textarea {
+  width: 100%;
+  border: 1.4px dashed #5A1F9F;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.text {
+  height: 250px;
+}
+
+.import {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#my_dataviz {
+  display: none; /* Initially hidden */
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.word-import {
+  resize: horizontal;
+}
+
+.import-method {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 48%;
+}
+
+.import-method textarea {
+  height: 30px;
+  resize: none;
+}
+
+.import-method button {
+  width: 100%;
+  height: 40px;
+}
+
+.color-palette {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  align-items: center;
+  margin-left: 25px;
+}
+
+.palette1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border: 1.4px solid #5A1F9F;
+}
+
+.palette2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #000;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.max {
+  text-align: center;
+  font-size: larger;
+}
+
+.rotation {
+  text-align: left;
+  font-size: larger;
+  padding: 10px;
+  border: 1.4px solid #5A1F9F;
+  border-radius: 5px;
+}
+
+.rotation-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.rotation-options label {
+  cursor: pointer;
+}
+
+.generate {
+  margin-top: auto;
+  text-align: center;
+}
+
+button {
+  background-color: #AA4BF5;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #FF885B;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-cloud {
+  width: 95%;
+  height: 700px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.download-btn {
+  margin-top: 830px;
+  margin-right: 30px;
+  text-align: center;
+  width: 100px;
+}
