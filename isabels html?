@@ -61,7 +61,7 @@
 
             <div class="fonts">
                 <label for="font-type">Select your font</label>
-                <select name="dog-names" id="dog-names">     <option value="default">Default</option>
+                <select name="font-names" id="font-names">     <option value="default">Default</option>
                     <option value="font1">font1</option>
                     <option value="font2">font2</option>
                     <option value="font3">font3</option>
