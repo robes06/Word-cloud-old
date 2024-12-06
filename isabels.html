@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.scss">
+    <title>Word Cloud Generator</title>
+</head>
+ 
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="content">
+                <div class="import">
+                    <div class="import-method">
+                        <label>
+                            <input type="radio" name="import-method" class="input-url"> Import from web:
+                        </label>
+                        <textarea id="url" rows="3"></textarea>
+                    </div>
+                    <div class="import-method">
+                        <label>
+                            <input type="radio" name="import-method" class="upload-file"> Upload file: <button>Browse</button>
+                        </label>
+                    </div>
+                </div>
+                <div class="text">
+                    <label>
+                        <input type="radio" name="import-method" class="import-text">Add your own text:
+                    </label>
+                    <textarea id="word-input" placeholder="Enter your text here..." rows="13"></textarea>
+                </div>
+                <div class="color-palette">
+                    <div class="palette1">
+                        <span><input type="radio" name="palette"> Light</span>
+                        <div class="color-options">
+                            <div class="color-circle" style="background-color: #1A0878;"></div>
+                            <div class="color-circle" style="background-color: #5A1F9F;"></div>
+                            <div class="color-circle" style="background-color: #FF4D27;"></div>
+                            <div class="color-circle" style="background-color: #000000;"></div>
+                            <div class="color-circle" style="background-color: #AA4BF5;"></div>
+                        </div>
+                    </div>
+                    <div class="palette2">
+                        <span><input type="radio" name="palette"> Dark</span>
+                        <div class="color-options">
+                            <div class="color-circle" style="background-color: #C8DCE9;"></div>
+                            <div class="color-circle" style="background-color: #AA4BF5;"></div>
+                            <div class="color-circle" style="background-color: #FF885B;"></div>
+                            <div class="color-circle" style="background-color: #FF4D27;"></div>
+                            <div class="color-circle" style="background-color: #E3E3E3;"></div>
+                            <div class="color-circle" style="background-color: #FFFFFF;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max">
+                    <label for="max-words">Max Words:</label>
+                    <input type="number" id="max-words" min="1" max="1000" value="500">
+                </div>
+                <div class="rotation">
+                    <label>Rotation:</label>
+                    <div class="rotation-options">
+                        <label><input type="checkbox" name="rotation" value="horizontal"> Horizontal</label>
+                        <label><input type="checkbox" name="rotation" value="vertical"> Vertical</label>
+                        <label><input type="checkbox" name="rotation" value="diagonal"> Diagonal</label>
+                    </div>
+                </div>
+                <div class="font">
+                    <label>Font styles:</label>
+                    <div class="rotation-options">
+                        <label><input type="radio" name="rotation" value="font1"> font1</label>
+                        <label><input type="radio" name="rotation" value="font2"> font2</label>
+                        <label><input type="radio" name="rotation" value="font3"> font3</label>
+                        <label><input type="radio" name="rotation" value="font4"> font4</label>
+                        <label><input type="radio" name="rotation" value="font5"> font5</label>
+                        <label><input type="radio" name="rotation" value="font6"> font6</label>
+                    </div>
+                </div>
+            </div>
+            <div class="generate">
+                <button id="generate">Generate</button>
+            </div>
+        </div>
+ 
+        <div class="main-content">
+            <div class="word-cloud" id="word-cloud">
+                <p>Word Cloud Placeholder</p>
+            </div>
+        </div>
+        <div class="download-btn">
+            <button id="download">Download</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+ 
+</html>
