@@ -24,9 +24,16 @@ body {
   border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
+  position: relative; 
+  gap: 10px;
+  overflow-x: auto; 
+}
+
+.content {
+  overflow-y: auto;
+  flex: 1; 
+  gap: 10px;
 }
 
 textarea {
@@ -54,6 +61,10 @@ textarea {
   border: 1px solid #ddd;
 }
 
+.import, .text, .color-palette, .max, .rotation, .font {
+  padding: 10px; 
+  border-radius: 5px; 
+}
 .word-import {
   resize: horizontal;
 }
@@ -119,6 +130,16 @@ textarea {
   font-size: larger;
 }
 
+.font {
+  text-align: center;
+  text-align: left;
+  font-size: larger;
+  padding: 10px;
+  border: 1.4px solid #5A1F9F;
+  border-radius: 5px;
+  margin-top: 15px; 
+}
+
 .rotation {
   text-align: left;
   font-size: larger;
@@ -139,15 +160,36 @@ textarea {
 }
 
 .generate {
-  margin-top: auto;
+  position: absolute; 
+  bottom: 20px; 
+  left: 20px;
+  right: 20px; 
   text-align: center;
+  background-color: #ffffff; 
+}
+
+#generate {
+  width: 80%; 
+  height: 40px; 
+  background-color: #AA4BF5; 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  transition-duration: 0.3s;
+}
+#generate:hover {
+  background-color: #FF885B;
+}
+
+.font .rotation-options {
+  margin-bottom: 40px;
 }
 
 button {
   background-color: #AA4BF5;
-  color: #000;
+  text-align: center;
+  color: #ffffff;
   border-radius: 5px;
-  padding: 10px;
   cursor: pointer;
   font-size: 20px;
   transition: background-color 0.3s;
@@ -181,4 +223,5 @@ button:hover {
   margin-right: 30px;
   text-align: center;
   width: 100px;
+  height: 30px;
 }
