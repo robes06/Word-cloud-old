@@ -31,9 +31,10 @@
                     </label>
                     <textarea id="word-input" placeholder="Enter your text here..." rows="13"></textarea>
                 </div>
+                
                 <div class="color-palette">
                     <div class="palette1">
-                        <span><input type="radio" name="palette"> Light</span>
+                        <span><input type="radio" name="palette" id="light-palette"> Light</span>
                         <div class="color-options">
                             <div class="color-circle" style="background-color: #1A0878;"></div>
                             <div class="color-circle" style="background-color: #5A1F9F;"></div>
@@ -43,7 +44,7 @@
                         </div>
                     </div>
                     <div class="palette2">
-                        <span><input type="radio" name="palette"> Dark</span>
+                        <span><input type="radio" name="palette" id="dark-palette"> Dark</span>
                         <div class="color-options">
                             <div class="color-circle" style="background-color: #C8DCE9;"></div>
                             <div class="color-circle" style="background-color: #AA4BF5;"></div>
@@ -84,7 +85,7 @@
         </div>
  
         <div class="main-content">
-            <div class="word-cloud" id="word-cloud">
+            <div class="word-cloud" id="my_dataviz">
                 <p>Word Cloud Placeholder</p>
             </div>
         </div>
@@ -92,7 +93,13 @@
             <button id="download">Download</button>
         </div>
     </div>
+    <div class="word-cloud" id="my_dataviz"></div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
+
+
 </body>
- 
 </html>
