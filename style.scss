@@ -24,7 +24,6 @@ body {
   border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative; 
   gap: 10px;
@@ -36,11 +35,6 @@ body {
   overflow-y: auto;
   flex: 1; 
   gap: 10px;
-=======
-  gap: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
 }
 
 textarea {
@@ -62,12 +56,8 @@ textarea {
 }
 
 #my_dataviz {
-<<<<<<< HEAD
   display: none; 
 =======
-  display: none; /* Initially hidden */
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
-  background-color: white;
   padding: 10px;
   border: 1px solid #ddd;
 }
@@ -75,11 +65,8 @@ textarea {
 <<<<<<< HEAD
 .import, .text, .color-palette, .max, .rotation, .font {
   padding: 10px; 
-  border-radius: 5px; 
 }
 
-=======
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
 .word-import {
   resize: horizontal;
 }
@@ -108,9 +95,6 @@ textarea {
   align-items: center;
 <<<<<<< HEAD
   margin-left: 15px;
-=======
-  margin-left: 25px;
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
 }
 
 .palette1 {
@@ -160,8 +144,6 @@ textarea {
   margin-top: 15px; 
 }
 
-=======
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
 .rotation {
   text-align: left;
   font-size: larger;
@@ -206,10 +188,6 @@ textarea {
 
 .font .rotation-options {
   margin-bottom: 40px;
-=======
-  margin-top: auto;
-  text-align: center;
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
 }
 
 button {
@@ -218,11 +196,6 @@ button {
   text-align: center;
   color: #ffffff;
   border-radius: 5px;
-=======
-  color: #000;
-  border-radius: 5px;
-  padding: 10px;
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
   cursor: pointer;
   font-size: 20px;
   transition: background-color 0.3s;
@@ -256,7 +229,6 @@ button:hover {
   margin-right: 30px;
   text-align: center;
   width: 100px;
-<<<<<<< HEAD
   height: 30px;
 } 
 .max {
@@ -339,6 +311,3 @@ button:hover {
   font-size: 16px;
 }
 
-=======
-}
->>>>>>> 185dd0b8d6b8b3a539589832bf3f56c205cc6cb7
