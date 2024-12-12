@@ -57,14 +57,14 @@ textarea {
 
 #my_dataviz {
   display: none; 
-=======
+  background-color: white;
   padding: 10px;
   border: 1px solid #ddd;
 }
 
-<<<<<<< HEAD
 .import, .text, .color-palette, .max, .rotation, .font {
   padding: 10px; 
+  border-radius: 5px; 
 }
 
 .word-import {
@@ -93,7 +93,6 @@ textarea {
   flex-direction: row;
   gap: 10%;
   align-items: center;
-<<<<<<< HEAD
   margin-left: 15px;
 }
 
@@ -133,7 +132,6 @@ textarea {
   font-size: larger;
 }
 
-<<<<<<< HEAD
 .font {
   text-align: center;
   text-align: left;
@@ -164,7 +162,6 @@ textarea {
 }
 
 .generate {
-<<<<<<< HEAD
   position: absolute; 
   bottom: 20px; 
   left: 20px;
@@ -193,7 +190,6 @@ textarea {
 button {
   background-color: #AA4BF5;
 <<<<<<< HEAD
-  text-align: center;
   color: #ffffff;
   border-radius: 5px;
   cursor: pointer;
