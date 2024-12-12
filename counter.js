@@ -1,36 +1,63 @@
-function updateWordCount(value) {
-    document.getElementById('word-count-label').innerText = value;
+
+const excludePanel = document.getElementById("exclude-words-panel");
+const excludePanelButton = document.getElementById("exclude-panel");
+const closeExcludePanelButton = document.getElementById("close-exclude-panel");
+
+
+excludePanelButton.addEventListener("click", () => {
+  excludePanel.classList.add("open");
+});
+
+closeExcludePanelButton.addEventListener("click", () => {
+  excludePanel.classList.remove("open");
+});
+
+
+const tagsInput = document.getElementById("tags");
+const addTagButton = document.getElementById("addtag");
+const tagsContainer = document.getElementById("tags-selection");
+
+
+function createTag(tagText) {
+  
+  const tag = document.createElement("div");
+  tag.className = "tag";
+
+  
+  const tagContent = document.createElement("span");
+  tagContent.textContent = tagText;
+  tag.appendChild(tagContent);
+
+  
+  const removeButton = document.createElement("button");
+  removeButton.className = "remove-tag";
+  removeButton.textContent = "✖";
+  tag.appendChild(removeButton);
+
+ 
+  removeButton.addEventListener("click", () => {
+    tagsContainer.removeChild(tag);
+  });
+
+
+  tagsContainer.appendChild(tag);
 }
 
-//Generate pop up WIP
 
-//document.addEventListener('DOMContentLoaded', function () {
+addTagButton.addEventListener("click", () => {
+  const inputText = tagsInput.value.trim();
 
-    //function setupPopup(buttonId, overlayId, closeId) {
-      //  const popupOverlay = document.getElementById(overlayId);
-      //  const closePopup = document.getElementById(closeId);
-      //  const button = document.getElementById(buttonId);
+ 
+  if (inputText) {
+    const tags = inputText.split(",");
+    tags.forEach((tag) => {
+      const trimmedTag = tag.trim();
+      if (trimmedTag) {
+        createTag(trimmedTag);
+      }
+    });
 
-      //  function openPopup() {
-      //      popupOverlay.style.display = 'block';
-      //  }
-
-      //  function closePopupFunc() {
-      //      popupOverlay.style.display = 'none';
-       // }
-
-      //  button.addEventListener('click', openPopup);
-       // closePopup.addEventListener('click', closePopupFunc);
-       // popupOverlay.addEventListener('click', function (event) {
-      //      if (event.target === popupOverlay) {
-       //         closePopupFunc();
-      //      }
-      //  });
-  //  }
-
-  //  setupPopup('settings-btn', 'settings-popupOverlay', 'settings-closePopup');
-  //  setupPopup('save-btn', 'save-popupOverlay', 'save-closePopup');
-  //  setupPopup('import-btn', 'import-popupOverlay', 'import-closePopup');
-//});
-
-//broken pls fix later );
+  
+    tagsInput.value = "";
+  }
+});

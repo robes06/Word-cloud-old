@@ -1,0 +1,2 @@
+- Rotation
+- Make checks before user clicks generate, maybe required fields?
