@@ -60,14 +60,17 @@ selectElement.addEventListener("change",(event) =>{
 // Function to generate word cloud
 function generateWordCloud(text) {
     const wordsArray = text.split(/\s+/); // Removes white space 
-
+    let excludedWords = JSON.parse(localStorage.getItem("tags")) || [];
+    let filteredWords = wordsArray.filter(word => !excludedWords.includes(word.toLowerCase()));
+    console.log(excludedWords)
     // Creates an object with each word and the frequency
+    
     const wordCounts = {}; 
-    wordsArray.forEach(word => {
+    filteredWords.forEach(word => {
         word = word.toLowerCase();
-        wordCounts[word] = (wordCounts[word] || 0) + 1;
-    });
-
+        wordCounts[word] = (wordCounts[word] || 0) + 1
+    })
+    
     // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
     const myWords = Object.keys(wordCounts).map(word => ({
         text: word,
@@ -127,7 +130,13 @@ document.getElementById("generate").addEventListener("click", () => {
         alert("Please enter some text before generating the word cloud!");
         return;
     }
-
+    const textRadio = document.getElementById("import-text").checked;
+    if(!textRadio){
+        alert("Please select the text input option!")
+        return;
+    }
     localStorage.setItem("text", text);
     generateWordCloud(text);
 });
+let tagText = localStorage.getItem("tagText")
+console.log(tagText)

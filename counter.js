@@ -2,7 +2,7 @@
 const excludePanel = document.getElementById("exclude-words-panel");
 const excludePanelButton = document.getElementById("exclude-panel");
 const closeExcludePanelButton = document.getElementById("close-exclude-panel");
-
+let tags = []
 
 excludePanelButton.addEventListener("click", () => {
   excludePanel.classList.add("open");
@@ -27,7 +27,10 @@ function createTag(tagText) {
   const tagContent = document.createElement("span");
   tagContent.textContent = tagText;
   tag.appendChild(tagContent);
-
+  
+  
+  
+  tags.push(tagText)
   
   const removeButton = document.createElement("button");
   removeButton.className = "remove-tag";
@@ -36,32 +39,47 @@ function createTag(tagText) {
 
  
   removeButton.addEventListener("click", () => {
+  
     tagsContainer.removeChild(tag);
-  });
+
+    
+    const index = tags.indexOf(tagText.trim().toLowerCase());  
+    
+
+    if (index > -1) {
+        tags.splice(index, 1); 
+        localStorage.setItem("tags", JSON.stringify(tags))
+    }
+    
+});
 
 
   tagsContainer.appendChild(tag);
+  
+
 }
 
 
 addTagButton.addEventListener("click", () => {
-  const inputText = tagsInput.value.trim();
+  const inputText = tagsInput.value.trim().toLowerCase();
 
  
   if (inputText) {
-    const tags = inputText.split(",");
-    tags.forEach((tag) => {
+    const newTags = inputText.split(",");
+    newTags.forEach((tag) => {
       const trimmedTag = tag.trim();
       if (trimmedTag) {
         createTag(trimmedTag);
       }
     });
 
-  
+    
     tagsInput.value = "";
   }
-});
+localStorage.setItem("tags",JSON.stringify(tags))
+console.log(tags)
 
+});
 const downloadPanel = document.getElementById("download-panel");
 const downloadButton = document.getElementById("download");
 const downloadPanelButtons = document.querySelectorAll(".png, .pdf");
@@ -79,6 +97,6 @@ document.addEventListener("click", (event) => {
 downloadPanelButtons.forEach(button => {
   button.addEventListener("click", (event) => {
     event.stopPropagation(); 
-    // Add your download logic here
+   
   });
 });
