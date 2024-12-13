@@ -61,3 +61,24 @@ addTagButton.addEventListener("click", () => {
     tagsInput.value = "";
   }
 });
+
+const downloadPanel = document.getElementById("download-panel");
+const downloadButton = document.getElementById("download");
+const downloadPanelButtons = document.querySelectorAll(".png, .pdf");
+
+downloadButton.addEventListener("click", () => {
+  downloadPanel.classList.add("open");
+});
+
+document.addEventListener("click", (event) => {
+  if (!downloadPanel.contains(event.target) && !event.target.matches("#download, .png, .pdf")) {
+    downloadPanel.classList.remove("open");
+  }
+});
+
+downloadPanelButtons.forEach(button => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation(); 
+    // Add your download logic here
+  });
+});
