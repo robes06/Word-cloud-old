@@ -1,39 +1,65 @@
-//When user clicks the download button, the word cloud is downloaded
+import {jsPDF} from "jspdf"; // Imports jsPDF library
 
+// When user clicks download button, word cloud is downloaded as PDF
+document.getElementById("pdf").addEventListener("click", function() {
+    const wordCloudElement = document.getElementById("my_dataviz");    // Gets word cloud element
 
-document.getElementById("download").addEventListener("click", function() {
-    // Select the div containing the word cloud (the parent div of the SVG)
-    const wordCloudElement = document.getElementById("my_dataviz");
  
-    // Check if the word cloud element exists and contains words (i.e., is not empty)
+    // Checks if the word cloud exists
     if (!wordCloudElement || wordCloudElement.style.display === "none" || wordCloudElement.querySelectorAll("text").length === 0) {
         console.error("Word cloud element not found or not rendered! Ensure that the word cloud has been generated.");
         alert("Cannot download because there is no text inputted!");
         return;
     }
  
-    // Log the word cloud element for debugging
-    console.log("Word Cloud Element:", wordCloudElement);
+    
  
-    // Use html2canvas to capture the element as a canvas
+    // Use html2canvas to capture the element as a canvas to download word cloud as  PDF
     html2canvas(wordCloudElement).then(function(canvas) {
-        // Create an image URL from the canvas
-        const imgURL = canvas.toDataURL("image/png");
- 
-        // Create an anchor link and trigger the download
-        const link = document.createElement("a");
-        link.href = imgURL;
+       
+        const imgURL = canvas.toDataURL("image/png"); // Create an image URL from the canvas
         
-        const {jsPDF} = window.jspdf;
-        console.log(window.jspdf);
-        const doc = new jsPDF()
-        doc.addImage(imgURL, 'PNG', 15, 40, 0, 0) 
-        doc.save("word-cloud.pdf")
-        //link.download = "word-cloud.pdf"; // Set the filename
-        link.click(); // Trigger the download
+      
+        
+      
+
+        const doc = new jsPDF(); // Creates new instance of jsPDF
+        doc.addImage(imgURL, 'PNG', 15, 40, 0, 0)  // Uses imgurl as image data and creates x,y for pdf
+        doc.save("word-cloud.pdf") // Saves as PDF
+    
+        link.click(); 
     }).catch(function(error) {
         console.error("Error generating PNG:", error);
     });
 });
  
 
+document.getElementById("png").addEventListener("click", function() {
+    const wordCloudElement = document.getElementById("my_dataviz");    // Gets word cloud element
+
+ 
+    // Checks if the word cloud exists
+    if (!wordCloudElement || wordCloudElement.style.display === "none" || wordCloudElement.querySelectorAll("text").length === 0) {
+        console.error("Word cloud element not found or not rendered! Ensure that the word cloud has been generated.");
+        alert("Cannot download because there is no text inputted!");
+        return;
+    }
+
+    html2canvas(wordCloudElement).then(function(canvas) {
+       
+        const imgURL = canvas.toDataURL("image/png"); // Create an image URL from the canvas
+        
+        const link = document.createElement("a");// Anchor element is created
+       
+        link.href = imgURL; //Creates a url which points to the PNG
+        link.download = "word-cloud.png"; // Set the filename
+        
+      
+
+       
+    
+        link.click(); 
+    }).catch(function(error) {
+        console.error("Error generating PNG:", error);
+    });
+});
