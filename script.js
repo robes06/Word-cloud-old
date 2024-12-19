@@ -63,9 +63,10 @@ function myFunction() {
 
 // Function to generate word cloud
 function generateWordCloud(text) {
-  const wordsArray = text.split(/\W\s/); // Removes non-words
+  const wordsArray = text.split(/[^\w]+/); // Removes non-words
 
   let excludedWords = JSON.parse(localStorage.getItem("tags")) || [];
+  console.log(excludedWords);
   let filteredWords = wordsArray.filter(
     (word) => !excludedWords.includes(word.toLowerCase())
   ); //Filters the words based on if excludedWords contains any words
@@ -77,7 +78,7 @@ function generateWordCloud(text) {
     word = word.toLowerCase();
     wordCounts[word] = (wordCounts[word] || 0) + 1;
   });
-  
+
   localStorage.setItem("filteredWords", JSON.stringify(filteredWords)); //Stores filtered words in localstorage
 
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
@@ -158,12 +159,14 @@ document.getElementById("generate").addEventListener("click", () => {
     alert("Please select the text input option!");
     return;
   }
+
+  localStorage.setItem("text", text);
+  generateWordCloud(text);
+
   // If the inputted words are more than the max words limit, a popup appears and prevents word cloud generation
   let filteredWords = JSON.parse(localStorage.getItem("filteredWords"));
   if (filteredWords.length > maxWords) {
     alert("You have inputted more words than your max word limit!");
     return;
   }
-  localStorage.setItem("text", text);
-  generateWordCloud(text);
 });

@@ -1,137 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.scss" />
+    <title>Word Cloud Generator</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.scss">
-  <title>Word Cloud Generator</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="sidebar">
-      <div class="content">
-        <div class="import">
-          <div class="import-method">
-            <label>
-              <input type="radio" name="import-method" class="input-url"> Import from web:
-            </label>
-            <textarea id="url" rows="3"></textarea>
-          </div>
-          <div class="import-method">
-            <label>
-              <input type="radio" name="import-method" class="upload-file"> Upload file: <button id="upload_button">Browse</button>
-            </label>
-          </div>
-        </div>
-        <div class="text">
-          <label>
-            <input type="radio" name="import-method" class="import-text">Add your own text:
-          </label>
-          <textarea id="word-input" placeholder="Enter your text here..." rows="13"></textarea>
-        </div>
-        <div class="max">
-          <label for="max-words">Max Words:</label>
-          <input type="number" id="max-words" min="1" max="1000" value="500">
-          <label for="exclude-panel">Exclude words:</label>
-          <button id="exclude-panel" title="Exclude Words">✖</button>
-        </div>
-        <div class="color-palette">
-          <div class="palette1">
-            <span><input type="radio" name="palette" id="light-palette"> Light</span>
-            <div class="color-options">
-              <div class="color-circle" style="background-color: #1A0878;"></div>
-              <div class="color-circle" style="background-color: #5A1F9F;"></div>
-              <div class="color-circle" style="background-color: #FF4D27;"></div>
-              <div class="color-circle" style="background-color: #000000;"></div>
-              <div class="color-circle" style="background-color: #AA4BF5;"></div>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="content">
+          <div class="import">
+            <div class="import-method">
+              <label>
+                <input type="radio" name="import-method" class="input-url" />
+                Import from web:
+              </label>
+              <textarea id="url" rows="3"></textarea>
+            </div>
+            <div class="import-method">
+              <label>
+                <input type="radio" name="import-method" class="upload-file" />
+                Upload file: <button id="upload_button">Browse</button>
+              </label>
             </div>
           </div>
-          <div class="palette2">
-            <span><input type="radio" name="palette" id="dark-palette"> Dark</span>
-            <div class="color-options">
-              <div class="color-circle" style="background-color: #C8DCE9;"></div>
-              <div class="color-circle" style="background-color: #AA4BF5;"></div>
-              <div class="color-circle" style="background-color: #FF885B;"></div>
-              <div class="color-circle" style="background-color: #FF4D27;"></div>
-              <div class="color-circle" style="background-color: #E3E3E3;"></div>
-              <div class="color-circle" style="background-color: #FFFFFF;"></div>
+          <div class="text">
+            <label>
+              <input
+                type="radio"
+                id="import-text"
+                name="import-method"
+                class="import-text"
+              />Add your own text:
+            </label>
+            <textarea
+              id="word-input"
+              placeholder="Enter your text here..."
+              rows="13"
+            ></textarea>
+          </div>
+          <div class="max">
+            <label for="max-words">Max Words:</label>
+            <input
+              type="number"
+              id="max-words"
+              min="1"
+              max="1000"
+              value="500"
+            />
+            <label for="exclude-panel">Exclude words:</label>
+            <button id="exclude-panel" title="Exclude Words">✖</button>
+          </div>
+          <div class="color-palette">
+            <div class="palette1">
+              <span
+                ><input type="radio" name="palette" id="light-palette" />
+                Light</span
+              >
+              <div class="color-options">
+                <div
+                  class="color-circle"
+                  style="background-color: #1a0878"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #5a1f9f"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #ff4d27"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #000000"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #aa4bf5"
+                ></div>
+              </div>
+            </div>
+            <div class="palette2">
+              <span
+                ><input type="radio" name="palette" id="dark-palette" />
+                Dark</span
+              >
+              <div class="color-options">
+                <div
+                  class="color-circle"
+                  style="background-color: #c8dce9"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #aa4bf5"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #ff885b"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #ff4d27"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #e3e3e3"
+                ></div>
+                <div
+                  class="color-circle"
+                  style="background-color: #ffffff"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation">
+            <label>Rotation:</label>
+            <div class="rotation-options">
+              <label
+                ><input type="checkbox" name="rotation" value="horizontal" />
+                Horizontal</label
+              >
+              <label
+                ><input type="checkbox" name="rotation" value="vertical" />
+                Vertical</label
+              >
+              <label
+                ><input type="checkbox" name="rotation" value="diagonal" />
+                Diagonal</label
+              >
+            </div>
+          </div>
+          <div class="font">
+            <label>Font styles:</label>
+            <div class="rotation-options">
+              <label
+                ><input type="radio" name="rotation" value="Impact" />
+                Impact</label
+              >
+              <label
+                ><input type="radio" name="rotation" value="Arial" />
+                Arial</label
+              >
+              <label
+                ><input type="radio" name="rotation" value="Fantasy" />
+                Fantasy</label
+              >
+              <label
+                ><input type="radio" name="rotation" value="Cursive" />
+                Cursive</label
+              >
+              <label
+                ><input type="radio" name="rotation" value="Lucida Console" />
+                Lucida Console</label
+              >
+              <label
+                ><input type="radio" name="rotation" value="Helvetica" />
+                Helvetica</label
+              >
             </div>
           </div>
         </div>
-
-        <div class="rotation">
-          <label>Rotation:</label>
-          <div class="rotation-options">
-            <label><input type="checkbox" name="rotation" value="horizontal"> Horizontal</label>
-            <label><input type="checkbox" name="rotation" value="vertical"> Vertical</label>
-            <label><input type="checkbox" name="rotation" value="diagonal"> Diagonal</label>
-          </div>
-        </div>
-        <div class="font">
-          <label>Font styles:</label>
-          <div class="rotation-options">
-            <label><input type="radio" name="rotation" value="Impact"> Impact</label>
-            <label><input type="radio" name="rotation" value="Arial"> Arial</label>
-            <label><input type="radio" name="rotation" value="Fantasy"> Fantasy</label>
-            <label><input type="radio" name="rotation" value="Cursive"> Cursive</label>
-            <label><input type="radio" name="rotation" value="Lucida Console"> Lucida Console</label>
-            <label><input type="radio" name="rotation" value="Helvetica"> Helvetica</label>
-          </div>
+        <div class="generate">
+          <button id="generate">Generate</button>
         </div>
       </div>
-      <div class="generate">
-        <button id="generate">Generate</button>
+
+      <div class="main-content">
+        <div class="word-cloud" id="my_dataviz"></div>
+      </div>
+      <div class="download-btn">
+        <button id="download">Download</button>
       </div>
     </div>
 
-    <div class="main-content">
-      <div class="word-cloud" id="my_dataviz"></div>
+    <div class="exclude-words-panel" id="exclude-words-panel">
+      <div class="exclude-header">
+        <h3>Exclude Words</h3>
+        <button id="close-exclude-panel">✖</button>
+      </div>
+      <div>
+        <label for="tags">Add your tags <em>(separate by comma): </em></label>
+      </div>
+      <div class="exclude-content">
+        <input type="text" id="tags" placeholder="Add word to exclude" />
+        <button id="addtag">Add</button>
+        <div id="tags-selection"></div>
+      </div>
     </div>
-    <div class="download-btn">
-      <button id="download">Download</button>
-    </div>
-  </div>
 
-  <div class="exclude-words-panel" id="exclude-words-panel">
-    <div class="exclude-header">
-      <h3>Exclude Words</h3>
-      <button id="close-exclude-panel">✖</button>
+    <div class="upload-panel" id="upload-panel">
+      <div class="upload-header">
+        <h1>Upload File</h1>
+        <button id="close-upload-panel">✖</button>
+      </div>
+      <div class="upload-container"></div>
+      <input type="file" id="fileInput" hidden />
+      <div id="dropZone" class="drop-zone">
+        <img src="upload folder.png" />
+        <h3>click to upload file or drop here</h3>
+      </div>
     </div>
-    <div>
-      <label for="tags">Add your tags <em>(separate by comma): </em></label>
-    </div>
-    <div class="exclude-content">
-      <input type="text" id="tags" placeholder="Add word to exclude">
-      <button id="addtag">Add</button>
-      <div id="tags-selection"></div>
-    </div>
-  </div>
 
-  <div class="upload-panel" id="upload-panel">
-    <div class="upload-header">
-      <h1>Upload File</h1>
-      <button id="close-upload-panel">✖</button>
+    <div class="download-panel" id="download-panel">
+      <button id="png" class="png">Download .PNG</button>
+      <button id="pdf" class="pdf">Download .PDF</button>
+      <script type="module" src="download.js"></script>
     </div>
-    <div class="upload-container"></div>
-    <input type="file" id="fileInput" hidden>
-    <div id="dropZone" class="drop-zone">
-      <img src="upload folder.png">
-      <h3>click to upload file or drop here</h3>
-    </div>
-  </div>
 
-  <div class="download-panel" id="download-panel">
-    <button class="png">Download .PNG</button>
-    <button class="pdf">Download .PDF</button>
-  </div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+    <script src="counter.js"></script>
 
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="script.js"></script>
-  <script src="counter.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+  </body>
 </html>
