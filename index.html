@@ -21,13 +21,13 @@
           </div>
           <div class="import-method">
             <label>
-              <input type="radio" name="import-method" class="upload-file"> Upload file: <button>Browse</button>
+              <input type="radio" name="import-method" class="upload-file"> Upload file: <button id="upload_button">Browse</button>
             </label>
           </div>
         </div>
         <div class="text">
           <label>
-            <input type="radio" name="import-method" class="import-text" id="import-text">Add your own text:
+            <input type="radio" name="import-method" class="import-text">Add your own text:
           </label>
           <textarea id="word-input" placeholder="Enter your text here..." rows="13"></textarea>
         </div>
@@ -87,45 +87,51 @@
     </div>
 
     <div class="main-content">
-      <div class="word-cloud" id="my_dataviz">
-      </div>
+      <div class="word-cloud" id="my_dataviz"></div>
     </div>
     <div class="download-btn">
       <button id="download">Download</button>
     </div>
   </div>
+
   <div class="exclude-words-panel" id="exclude-words-panel">
     <div class="exclude-header">
       <h3>Exclude Words</h3>
       <button id="close-exclude-panel">✖</button>
     </div>
     <div>
-      <label for="tags"
-        >Add your tags <em>(separate by comma): </em></label
-      ></label>
-
+      <label for="tags">Add your tags <em>(separate by comma): </em></label>
     </div>
-    <div>
-      <div class="exclude-content">
-        <input type="text" id="tags" placeholder="Add word to exclude">
-        <button id="addtag">Add</button>
-        <div id="tags-selection"></div>
-      </div>
+    <div class="exclude-content">
+      <input type="text" id="tags" placeholder="Add word to exclude">
+      <button id="addtag">Add</button>
+      <div id="tags-selection"></div>
+    </div>
+  </div>
+
+  <div class="upload-panel" id="upload-panel">
+    <div class="upload-header">
+      <h1>Upload File</h1>
+      <button id="close-upload-panel">✖</button>
+    </div>
+    <div class="upload-container"></div>
+    <input type="file" id="fileInput" hidden>
+    <div id="dropZone" class="drop-zone">
+      <img src="upload folder.png">
+      <h3>click to upload file or drop here</h3>
     </div>
   </div>
 
   <div class="download-panel" id="download-panel">
-    <button id="png" class="png">Download .PNG</button>
-    <button id ="pdf" class="pdf">Download .PDF</button>
-    <script type ="module" src="download.js"></script>
+    <button class="png">Download .PNG</button>
+    <button class="pdf">Download .PDF</button>
   </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="counter.js"></script>
   <script src="script.js"></script>
-  
+  <script src="counter.js"></script>
 </body>
 
 </html>

@@ -350,3 +350,61 @@ button:hover {
   height: 30px;
   z-index: 100;
 } 
+
+.upload-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 26%;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  padding: 20px;
+  overflow-y: auto;
+  display: none;
+}
+
+.upload-panel.open {
+  display: block;
+}
+
+.upload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+#close-upload-panel {
+  background-color: #FF4D27;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#close-upload-panel:hover {
+  background-color: #AA4BF5;
+}
+
+.drop-zone {
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 60%;
+}
+
+.drop-zone.dragover {
+  border-color: #000;
+}
+
+.drop-zone img{
+  width: 65px;
+  height: auto;
+}

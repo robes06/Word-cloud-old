@@ -2,7 +2,7 @@
 const excludePanel = document.getElementById("exclude-words-panel");
 const excludePanelButton = document.getElementById("exclude-panel");
 const closeExcludePanelButton = document.getElementById("close-exclude-panel");
-let tags = []
+
 
 excludePanelButton.addEventListener("click", () => {
   excludePanel.classList.add("open");
@@ -27,10 +27,7 @@ function createTag(tagText) {
   const tagContent = document.createElement("span");
   tagContent.textContent = tagText;
   tag.appendChild(tagContent);
-  
-  
-  
-  tags.push(tagText)
+
   
   const removeButton = document.createElement("button");
   removeButton.className = "remove-tag";
@@ -39,47 +36,32 @@ function createTag(tagText) {
 
  
   removeButton.addEventListener("click", () => {
-  
     tagsContainer.removeChild(tag);
-
-    
-    const index = tags.indexOf(tagText.trim().toLowerCase());  
-    
-
-    if (index > -1) {
-        tags.splice(index, 1); 
-        localStorage.setItem("tags", JSON.stringify(tags))
-    }
-    
-});
+  });
 
 
   tagsContainer.appendChild(tag);
-  
-
 }
 
 
 addTagButton.addEventListener("click", () => {
-  const inputText = tagsInput.value.trim().toLowerCase();
+  const inputText = tagsInput.value.trim();
 
  
   if (inputText) {
-    const newTags = inputText.split(",");
-    newTags.forEach((tag) => {
+    const tags = inputText.split(",");
+    tags.forEach((tag) => {
       const trimmedTag = tag.trim();
       if (trimmedTag) {
         createTag(trimmedTag);
       }
     });
 
-    
+  
     tagsInput.value = "";
   }
-localStorage.setItem("tags",JSON.stringify(tags))
-console.log(tags)
-
 });
+
 const downloadPanel = document.getElementById("download-panel");
 const downloadButton = document.getElementById("download");
 const downloadPanelButtons = document.querySelectorAll(".png, .pdf");
@@ -94,9 +76,50 @@ document.addEventListener("click", (event) => {
   }
 });
 
-downloadPanelButtons.forEach(button => {
-  button.addEventListener("click", (event) => {
-    event.stopPropagation(); 
-   
+
+document.addEventListener('DOMContentLoaded', () => {
+  const uploadPanel = document.getElementById("upload-panel");
+  const uploadButton = document.getElementById("upload_button");
+  const closeUploadPanelButton = document.getElementById("close-upload-panel");
+
+  uploadButton.addEventListener("click", () => {
+      uploadPanel.classList.add("open");
   });
+
+  closeUploadPanelButton.addEventListener("click", () => {
+      uploadPanel.classList.remove("open");
+  });
+
+  const dropZone = document.getElementById('dropZone');
+  const fileInput = document.getElementById('fileInput');
+
+  dropZone.addEventListener('click', () => {
+      fileInput.click();
+  });
+
+  dropZone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropZone.classList.add('dragover');
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('dragover');
+  });
+
+  dropZone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      dropZone.classList.remove('dragover');
+      const files = event.dataTransfer.files;
+      handleFiles(files);
+  });
+
+  fileInput.addEventListener('change', (event) => {
+      const files = event.target.files;
+      handleFiles(files);
+  });
+
+  function handleFiles(files) {
+      console.log('Files uploaded:', files);
+      // Add your file handling logic here
+  }
 });
