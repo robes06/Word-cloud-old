@@ -149,15 +149,24 @@ function generateWordCloud(text) {
 // Runs generation function when users clicks 'generate' button
 document.getElementById("generate").addEventListener("click", () => {
   // Checks if the word cloud has text input
-  const text = document.getElementById("word-input").value;
-  if (text.trim() === "") {
+  let text = document.getElementById("word-input").value;
+
+  const textRadio = document.getElementById("import-text").checked;
+  const uploadRadio = document.getElementById("upload-file").checked;
+  const inputRadio = document.getElementById("input-url").checked;
+
+  if (!textRadio && text.trim() === "") {
     alert("Please enter some text before generating the word cloud!");
     return;
   }
-  const textRadio = document.getElementById("import-text").checked;
-  if (!textRadio) {
-    alert("Please select the text input option!");
+  if (!textRadio && !uploadRadio && !inputRadio) {
+    alert("You must select an input!");
     return;
+  }
+  
+  if (uploadRadio) {
+    text = localStorage.getItem("uploadedText");
+    console.log("Text should be:", text);
   }
 
   localStorage.setItem("text", text);

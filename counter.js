@@ -157,5 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Read the file as an ArrayBuffer
       reader.readAsArrayBuffer(file);
     }
+    else if (!file){
+      alert("No file detected!");
+    }
   }
 });
