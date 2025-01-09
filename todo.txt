@@ -1,2 +1,3 @@
+- Have the radio button working which allows the user to know which text input method they have selected (disable the other two radio butons for only one to work)
 - Rotation
 - Make checks before user clicks generate, maybe required fields?
