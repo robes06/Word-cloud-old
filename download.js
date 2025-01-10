@@ -28,7 +28,24 @@ document.getElementById("pdf").addEventListener("click", function () {
         format: [297, 210],
       }); // Creates new instance of jsPDF
 
-      doc.addImage(imgURL, "PNG", 0, 0, 0, 0); // Uses imgurl as image data and creates x,y for pdf
+      // Get the width and height of the canvas
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+
+      // Define the PDF dimensions (A4 landscape)
+      const pdfWidth = 297; // A4 width in mm
+      const pdfHeight = 210; // A4 height in mm
+
+      
+      // Calculate scale factor to fit image inside the PDF
+      const scaleFactor = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+
+      const scaledImgWidth = imgWidth * scaleFactor;
+      const scaledImgHeight = imgHeight * scaleFactor;
+
+      const offsetX = (pdfWidth - scaledImgWidth) / 2;
+      const offsetY = (pdfHeight - scaledImgHeight) / 2;
+      doc.addImage(imgURL, "PNG", offsetX, offsetY, scaledImgWidth, scaledImgHeight); // Uses imgurl as image data and creates x,y for pdf
       doc.save("word-cloud.pdf"); // Saves as PDF
 
       link.click();

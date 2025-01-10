@@ -131,6 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Check if a file was selected
     if (file) {
+      const uploadRadio = document.getElementById("upload-file")
+      uploadRadio.checked = true
+      uploadPanel.classList.remove("open");
       // Create a FileReader to read the file
       const reader = new FileReader();
 
@@ -157,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Read the file as an ArrayBuffer
       reader.readAsArrayBuffer(file);
     }
-    else if (!file){
+    else if (!files){
       alert("No file detected!");
     }
   }

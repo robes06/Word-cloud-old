@@ -1,3 +1,7 @@
+// On page load, clears data from local storage
+document.addEventListener("DOMContentLoaded",function(){
+  localStorage.clear()
+})
 // Initialises colours and fonts
 let backgroundColor = "#FFFFFF";
 let selectedFont = localStorage.getItem("selectedFont");
@@ -61,6 +65,7 @@ function myFunction() {
   maxWords = document.getElementById("max-words").value;
 }
 
+
 // Function to generate word cloud
 function generateWordCloud(text) {
   const wordsArray = text.split(/[^\w]+/); // Removes non-words
@@ -84,7 +89,7 @@ function generateWordCloud(text) {
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
   const myWords = Object.keys(wordCounts).map((word) => ({
     text: word,
-    size: wordCounts[word] * 20,
+    size: wordCounts[word] * 13,
   }));
 
   // Creates margins for svg
@@ -109,16 +114,18 @@ function generateWordCloud(text) {
     .cloud()
     .size([width, height])
     .words(myWords)
-    .padding(10)
+    .padding(35)
     .fontSize(function (d) {
-      return d.size;
+      return Math.max(15, ((d.size * 5) / 3));
     })
+    .spiral("rectangular")
     .on("end", draw);
 
   layout.start();
 
   // Generated word cloud from user input
   function draw(words) {
+    console.log(words)
     svg
       .append("g") // Groups svg
       .attr(
@@ -151,22 +158,33 @@ document.getElementById("generate").addEventListener("click", () => {
   // Checks if the word cloud has text input
   let text = document.getElementById("word-input").value;
 
-  const textRadio = document.getElementById("import-text").checked;
-  const uploadRadio = document.getElementById("upload-file").checked;
-  const inputRadio = document.getElementById("input-url").checked;
+  let textRadio = document.getElementById("import-text").checked
+  let uploadRadio = document.getElementById("upload-file").checked
+  let inputRadio = document.getElementById("input-url").checked
 
-  if (!textRadio && text.trim() === "") {
-    alert("Please enter some text before generating the word cloud!");
-    return;
+  // if (!textRadio && text.trim() === "") {
+  //   alert("Please enter some text before generating the word cloud!");
+  //   return;
+  // }
+console.log(text.value)
+  if(text.trim() != ""){
+    textRadio = true
+    console.log(textRadio)
   }
+  else{
+    textRadio.checked   = false
+  }
+  console.log(textRadio.checked)
   if (!textRadio && !uploadRadio && !inputRadio) {
     alert("You must select an input!");
     return;
   }
-  
+  console.log(uploadRadio)
+
   if (uploadRadio) {
     text = localStorage.getItem("uploadedText");
     console.log("Text should be:", text);
+    
   }
 
   localStorage.setItem("text", text);

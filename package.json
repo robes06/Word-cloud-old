@@ -11,15 +11,17 @@
   "author": "robin",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "express": "^4.21.2",
     "jspdf": "^2.5.2",
     "mammoth": "^1.8.0",
     "node": "^23.4.0",
+    "npm": "^11.0.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
-    "sass": "^1.82.0",
+    "sass": "^1.83.1",
     "vite": "^6.0.3"
   },
   "repository": {
