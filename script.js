@@ -30,6 +30,12 @@ document.getElementById("dark-palette").addEventListener("click", function () {
   updateWordCloudStyles();
 });
 
+let textarea = document.getElementById("word-input");
+let textradio = document.getElementById("import-text");
+textarea.addEventListener("click", () => {
+  textradio.checked = true;
+});
+
 // Changes rotation of words in word cloud
 let rotateElement = document.querySelector(".rotation-options");
 rotateElement.addEventListener("change", (event) => {
@@ -165,9 +171,9 @@ document.getElementById("generate").addEventListener("click", () => {
   //   alert("Please enter some text before generating the word cloud!");
   //   return;
   // }
+
   console.log(text.value);
   if (text.trim() != "") {
-    textRadio = true;
     console.log(textRadio);
   } else {
     textRadio.checked = false;
