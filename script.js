@@ -182,6 +182,7 @@ document.getElementById("generate").addEventListener("click", () => {
   if (uploadRadio) {
     text = localStorage.getItem("uploadedText");
     console.log("Text should be:", text);
+    document.getElementById("word-input").value = text;
   }
 
   localStorage.setItem("text", text);
