@@ -36,7 +36,6 @@ document.getElementById("pdf").addEventListener("click", function () {
       const pdfWidth = 297; // A4 width in mm
       const pdfHeight = 210; // A4 height in mm
 
-      
       // Calculate scale factor to fit image inside the PDF
       const scaleFactor = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
 
@@ -45,7 +44,14 @@ document.getElementById("pdf").addEventListener("click", function () {
 
       const offsetX = (pdfWidth - scaledImgWidth) / 2;
       const offsetY = (pdfHeight - scaledImgHeight) / 2;
-      doc.addImage(imgURL, "PNG", offsetX, offsetY, scaledImgWidth, scaledImgHeight); // Uses imgurl as image data and creates x,y for pdf
+      doc.addImage(
+        imgURL,
+        "PNG",
+        offsetX,
+        offsetY,
+        scaledImgWidth,
+        scaledImgHeight
+      ); // Uses imgurl as image data and creates x,y for pdf
       doc.save("word-cloud.pdf"); // Saves as PDF
 
       link.click();
