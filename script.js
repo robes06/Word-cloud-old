@@ -179,7 +179,7 @@ function generateWordCloud(text) {
 }
 
 // Runs generation function when users clicks 'generate' button
-document.getElementById("generate").addEventListener("click", () => {
+document.getElementById("generate").addEventListener("click", (generate) => {
   // Checks if the word cloud has text input
   let text = document.getElementById("word-input").value;
 
