@@ -3,6 +3,7 @@ const excludePanel = document.getElementById("exclude-words-panel");
 const excludePanelButton = document.getElementById("exclude-panel");
 const closeExcludePanelButton = document.getElementById("close-exclude-panel");
 let tags = [];
+const commonTagsContainer = document.querySelector(".common-tags-container");
 
 excludePanelButton.addEventListener("click", () => {
   excludePanel.classList.add("open");
@@ -66,6 +67,32 @@ document.addEventListener("DOMContentLoaded", () => {
   storedTags.forEach((tagText) => {
     createTag(tagText);
   });
+});
+
+commonTagsContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("common-tag")) {
+    const commonTagText = event.target.textContent.trim();
+    createTag(commonTagText);
+  }
+});
+
+
+addTagButton.addEventListener("click", () => {
+  const inputText = tagsInput.value.trim();
+
+ 
+  if (inputText) {
+    const tags = inputText.split(",");
+    tags.forEach((tag) => {
+      const trimmedTag = tag.trim();
+      if (trimmedTag) {
+        createTag(trimmedTag);
+      }
+    });
+
+  
+    tagsInput.value = "";
+  }
 });
 
 const downloadPanel = document.getElementById("download-panel");
