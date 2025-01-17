@@ -98,9 +98,13 @@ function generateWordCloud(text) {
   }));
 
   // Creates margins for svg
-  const margin = { top: 10, right: 10, bottom: 10, left: 10 },
-    width = 1200 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+  const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+
+  // Reference the container's width and height
+  const container = document.getElementById("my_dataviz");
+  const width = container.offsetWidth - margin.left - margin.right;
+  const height = container.offsetHeight - margin.top - margin.bottom;
+
 
   d3.select("#my_dataviz").html("");
   d3.select("#my_dataviz").style("display", "block");
