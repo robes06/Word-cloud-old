@@ -135,33 +135,9 @@
           <div class="rotation">
             <label>Rotation:</label>
             <div class="rotation-options">
-              <label
-                ><input
-                  type="checkbox"
-                  name="rotation"
-                  value="horizontal"
-                  checked
-                />
-                Horizontal</label
-              >
-              <label
-                ><input
-                  type="checkbox"
-                  name="rotation"
-                  value="vertical"
-                  checked
-                />
-                Vertical</label
-              >
-              <label
-                ><input
-                  type="checkbox"
-                  name="rotation"
-                  value="diagonal"
-                  checked
-                />
-                Diagonal</label
-              >
+              <label><input type="checkbox" name="rotation" value="horizontal" checked>Horizontal</label>
+              <label><input type="checkbox" name="rotation" value="vertical" checked> Vertical</label>
+              <label><input type="checkbox"  name="rotation"  value="diagonal"  checked> Diagonal</label>
             </div>
           </div>
           <div class="font">
@@ -218,8 +194,28 @@
       <div class="exclude-content">
         <input type="text" id="tags" placeholder="Add word to exclude" />
         <button id="addtag">Add</button>
+        <div class="common-tags-container">
+          <div class="common-tag">and</div>
+          <div class="common-tag">a</div>
+          <div class="common-tag">but</div>
+          <div class="common-tag">the</div>
+          <div class="common-tag">or</div>
+          <div class="common-tag">not</div>
+          <div class="common-tag">of</div>
+          <div class="common-tag">in</div>
+          <div class="common-tag">to</div>
+          <div class="common-tag">is</div>
+        </div>
+        <div id="tags-selection"></div>
         <div id="tags-selection"></div>
       </div>
+      <div class="commonwords">
+        <h4>Group Similar Words</h4>
+        <div class="rotation-options">
+          <label><input type="checkbox" name="commonwords" value="Capitalization" checked>Capitalization</label>
+          <label><input type="checkbox" name="commonwords" value="Plural" checked>Plural</label>
+          <label><input type="checkbox" name="commonwords" value="Spelling"  checked>Spelling</label>
+        </div>
     </div>
 
     <div class="upload-panel" id="upload-panel">
