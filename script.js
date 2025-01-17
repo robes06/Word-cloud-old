@@ -81,6 +81,13 @@ function generateWordCloud(text) {
     (word) => !excludedWords.includes(word.toLowerCase())
   ); //Filters the words based on if excludedWords contains any words
 
+  // Get max repetitions from the input field by user
+  let maxRepetitions = parseInt(
+    document.getElementById("max-repetitions").value,
+    10
+  );
+  console.log(maxRepetitions);
+
   // Creates an object with each word and the frequency
 
   const wordCounts = {};
@@ -88,14 +95,21 @@ function generateWordCloud(text) {
     word = word.toLowerCase();
     wordCounts[word] = (wordCounts[word] || 0) + 1;
   });
-  
-  // Get max repetitions from the input field by user
-    const maxRepetitions = parseInt(document.getElementById("max-repetitions").value, 10);
-  
+
+  // I honestly used copilot so i dont know how this works
+  // Im guessing that an object is created and the (key pair) value is checked to see if it is above
+  // the max repititions value and if it is then it is passed
+  const filteredWordCounts = {};
+  Object.keys(wordCounts).forEach((word) => {
+    if (wordCounts[word] >= maxRepetitions) {
+      filteredWordCounts[word] = wordCounts[word];
+    }
+  });
+
   localStorage.setItem("filteredWords", JSON.stringify(filteredWords)); //Stores filtered words in localstorage
 
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
-  const myWords = Object.keys(wordCounts).map((word) => ({
+  const myWords = Object.keys(filteredWordCounts).map((word) => ({
     text: word,
     size: wordCounts[word] * 13,
   }));
@@ -107,7 +121,6 @@ function generateWordCloud(text) {
   const container = document.getElementById("my_dataviz");
   const width = container.offsetWidth - margin.left - margin.right;
   const height = container.offsetHeight - margin.top - margin.bottom;
-
 
   d3.select("#my_dataviz").html("");
   d3.select("#my_dataviz").style("display", "block");
