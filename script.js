@@ -88,7 +88,10 @@ function generateWordCloud(text) {
     word = word.toLowerCase();
     wordCounts[word] = (wordCounts[word] || 0) + 1;
   });
-
+  
+  // Get max repetitions from the input field by user
+    const maxRepetitions = parseInt(document.getElementById("max-repetitions").value, 10);
+  
   localStorage.setItem("filteredWords", JSON.stringify(filteredWords)); //Stores filtered words in localstorage
 
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
