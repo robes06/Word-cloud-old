@@ -109,10 +109,17 @@ function generateWordCloud(text) {
   localStorage.setItem("filteredWords", JSON.stringify(filteredWords)); //Stores filtered words in localstorage
 
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
-  const myWords = Object.keys(filteredWordCounts).map((word) => ({
+  let myWords = Object.keys(filteredWordCounts).map((word) => ({
     text: word,
     size: wordCounts[word] * 13,
   }));
+
+  console.log("aaa", myWords);
+
+  myWords.forEach((wordObj) => {
+    console.log(`Word: ${wordObj.text}, Count: ${wordCounts[wordObj.text]}`);
+    localStorage.setItem("wordCount", wordCounts[wordObj.text]);
+  });
 
   // Creates margins for svg
   const margin = { top: 10, right: 10, bottom: 10, left: 10 };
@@ -143,7 +150,6 @@ function generateWordCloud(text) {
     .fontSize(function (d) {
       return Math.max(15, (d.size * 5) / 3);
     })
-    .spiral("rectangular")
     .on("end", draw);
 
   layout.start();
@@ -212,6 +218,7 @@ document.getElementById("generate").addEventListener("click", (generate) => {
   }
 
   localStorage.setItem("text", text);
+  console.log(text);
   generateWordCloud(text);
 
   // If the inputted words are more than the max words limit, a popup appears and prevents word cloud generation
@@ -219,5 +226,12 @@ document.getElementById("generate").addEventListener("click", (generate) => {
   if (filteredWords.length > maxWords) {
     alert("You have inputted more words than your max word limit!");
     return;
+  }
+  console.log("Filtered words:", filteredWords);
+  let wordCount = localStorage.getItem("wordCount");
+  if (filteredWords.length > wordCount) {
+    alert(
+      "You have inputted words less than your word frequency input, so some words will not display as they haven't met the frequency criteria. There needs to be a certain number of repeated words based on the frequency to generate. "
+    );
   }
 });
