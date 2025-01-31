@@ -1,4 +1,4 @@
-// On page load, clears data from local storage
+// When page loads it clears data from local storage
 document.addEventListener("DOMContentLoaded", function () {
   localStorage.clear();
 });
@@ -9,7 +9,7 @@ let rotation = 0;
 
 const lightPalette = ["#1A0878", "#5A1F9F", "#FF4D27", "#000000", "#AA4BF5"];
 const darkPalette = ["#C8DCE9", "#AA4BF5", "#FF885B", "#FF4D27", "#E3E3E3"];
-let selectedPalette = lightPalette; // Default is light palette
+let selectedPalette = lightPalette; // Default light palette
 
 // Updates the word cloud background colour
 function updateWordCloudStyles() {
@@ -96,8 +96,7 @@ function generateWordCloud(text) {
     wordCounts[word] = (wordCounts[word] || 0) + 1;
   });
 
-  // I honestly used copilot so i dont know how this works
-  // Im guessing that an object is created and the (key pair) value is checked to see if it is above
+  // I think an object is created and the (key pair) value is checked to see if it is above
   // the max repititions value and if it is then it is passed
   const filteredWordCounts = {};
   Object.keys(wordCounts).forEach((word) => {
