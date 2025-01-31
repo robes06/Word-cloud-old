@@ -46,27 +46,34 @@
                 id="import-text"
               />Add your own text:
             </label>
-            <textarea
-              id="word-input"
-              placeholder="Enter your text here..."
-              rows="13"
-            ></textarea>
+            <div class="textarea-container">
+              <textarea
+                id="word-input"
+                placeholder="Enter your text here..."
+                rows="13"
+              ></textarea>
+              <div id="word-counter">0 / 500</div>
+            </div>
           </div>
           <div class="max">
-            <label for="max-words">Max Words:</label>
-            <input
-              type="number"
-              id="max-words"
-              min="1"
-              max="1000"
-              value="500"
-            />
-            <div>
-              <label for="max-repetitions">Word Frequency</label>
+            <div class="item">
+              <label for="max-words">Max Words:</label>
+              <input
+                type="number"
+                id="max-words"
+                min="1"
+                max="1000"
+                value="500"
+              />
+            </div>
+            <div class="item">
+              <label for="max-repetitions">Word Frequency:</label>
               <input type="number" id="max-repetitions" value="3" min="1" max="100" />
             </div>
-            <label for="exclude-panel">Exclude words:</label>
-            <button id="exclude-panel" title="Exclude Words">✖</button>
+            <div class="item">
+              <label for="exclude-panel">Exclude words:</label>
+              <button id="exclude-panel" title="Exclude Words">✖</button>
+            </div>
           </div>
           <div class="color-palette">
             <div class="palette1">
@@ -251,3 +258,4 @@
     <script type="module" src="interactionHandler.js"></script>
   </body>
 </html>
+
