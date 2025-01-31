@@ -501,6 +501,10 @@ button:hover {
   height: auto;
 }
 
+.error {
+  border: 2px solid red;
+}
+
 @media only screen and (max-width: 800px) {
 
   .container {

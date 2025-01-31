@@ -2,6 +2,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   localStorage.clear();
 });
+
+let wordFrequency = document.getElementById("max-repetitions");
+let wordFrequencycount = wordFrequency.value;
+
 // Initialises colours and fonts
 let backgroundColor = "#FFFFFF";
 let selectedFont = localStorage.getItem("selectedFont");
@@ -111,14 +115,13 @@ function generateWordCloud(text) {
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
   let myWords = Object.keys(filteredWordCounts).map((word) => ({
     text: word,
-    size: wordCounts[word] * 13,
+    size: wordCounts[word] * 10,
   }));
 
   console.log("aaa", myWords);
 
   myWords.forEach((wordObj) => {
     console.log(`Word: ${wordObj.text}, Count: ${wordCounts[wordObj.text]}`);
-    localStorage.setItem("wordCount", wordCounts[wordObj.text]);
   });
 
   // Creates margins for svg
@@ -227,11 +230,21 @@ document.getElementById("generate").addEventListener("click", (generate) => {
     alert("You have inputted more words than your max word limit!");
     return;
   }
-  console.log("Filtered words:", filteredWords);
-  let wordCount = localStorage.getItem("wordCount");
-  if (filteredWords.length > wordCount) {
+  console.log("Filtered words:", filteredWords.length);
+
+  wordFrequency.addEventListener("input", function () {
+    wordFrequencycount = wordFrequency.value;
+    console.log(wordFrequencycount);
+  });
+  localStorage.setItem("wordFrequency", wordFrequencycount);
+  console.log("Word frequency:", wordFrequencycount);
+
+  if (filteredWords.length < wordFrequencycount) {
     alert(
-      "You have inputted words less than your word frequency input, so some words will not display as they haven't met the frequency criteria. There needs to be a certain number of repeated words based on the frequency to generate. "
+      "Some words are missing because they didn't meet the required frequency."
     );
+    wordFrequency.classList.add("error");
+  } else {
+    wordFrequency.classList.remove("error");
   }
 });

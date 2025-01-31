@@ -76,11 +76,9 @@ commonTagsContainer.addEventListener("click", (event) => {
   }
 });
 
-
 addTagButton.addEventListener("click", () => {
   const inputText = tagsInput.value.trim();
 
- 
   if (inputText) {
     const tags = inputText.split(",");
     tags.forEach((tag) => {
@@ -90,7 +88,6 @@ addTagButton.addEventListener("click", () => {
       }
     });
 
-  
     tagsInput.value = "";
   }
 });
@@ -162,31 +159,52 @@ document.addEventListener("DOMContentLoaded", () => {
       const uploadRadio = document.getElementById("upload-file");
       uploadRadio.checked = true;
       uploadPanel.classList.remove("open");
-      // Create a FileReader to read the file
-      const reader = new FileReader();
 
-      // When the file is loaded
-      reader.onload = function (e) {
-        // Get the ArrayBuffer from the file content
-        const arrayBuffer = e.target.result;
+      let fileName = file.name;
+      if (fileName.endsWith(".txt")) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          let uploadedText = event.target.result;
+          localStorage.setItem("uploadedText", uploadedText);
+          const textDiv = document.getElementById("word-input");
+          textDiv.value = uploadedText;
+        };
+        reader.onerror = function (error) {
+          console.error("Error reading file:", error);
+        };
 
-        // Use mammoth to extract raw text from the .docx file
-        mammoth
-          .extractRawText({ arrayBuffer: arrayBuffer })
-          .then((result) => {
-            // Display the extracted raw text in the output div
-            console.log(result.value);
-            let uploadedText = result.value;
-            localStorage.setItem("uploadedText", uploadedText);
-          })
-          .catch((err) => {
-            // Handle any errors
-            console.error("Error extracting text:", err);
-          });
-      };
+        reader.readAsText(file);
+      }
+      if (fileName.endsWith(".docx")) {
+        // Create a FileReader to read the file
+        console.log("File is a .docx file");
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+
+        // When the file is loaded
+        reader.onload = function (e) {
+          console.log("File loaded:", e);
+          // Get the ArrayBuffer from the file content
+          const arrayBuffer = e.target.result;
+          console.log("RAAAH", arrayBuffer);
+
+          // Use mammoth to extract raw text from the .docx file
+          mammoth
+            .extractRawText({ arrayBuffer: arrayBuffer })
+            .then((result) => {
+              // Display the extracted raw text in the output div
+              console.log(result.value);
+              let uploadedText = result.value;
+              localStorage.setItem("uploadedText", uploadedText);
+            })
+            .catch((err) => {
+              // Handle any errors
+              console.error("Error extracting text:", err);
+            });
+        };
+      }
 
       // Read the file as an ArrayBuffer
-      reader.readAsArrayBuffer(file);
     } else if (!files) {
       alert("No file detected!");
     }

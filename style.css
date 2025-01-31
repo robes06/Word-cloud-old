@@ -17,8 +17,8 @@ body {
 }
 
 .sidebar {
-  width: 30%;
   max-width: 400px;
+  min-width: 400px;
   background-color: #ffffff;
   padding: 20px;
   border-right: 1px solid #ccc;
@@ -39,10 +39,9 @@ body {
 
 textarea {
   width: 100%;
-  border: 1.4px dashed #5a1f9f;
+  border: 1.4px dashed #5A1F9F;
   border-radius: 5px;
   padding: 10px;
-  resize: none;
 }
 
 .text {
@@ -63,12 +62,7 @@ textarea {
   border: 1px solid #ddd;
 }
 
-.import,
-.text,
-.color-palette,
-.max,
-.rotation,
-.font {
+.import, .text, .color-palette, .max, .rotation, .font {
   padding: 10px;
   border-radius: 5px;
 }
@@ -99,7 +93,6 @@ textarea {
   flex-direction: row;
   gap: 10%;
   align-items: center;
-  margin-left: 15px;
 }
 
 .palette1 {
@@ -107,7 +100,7 @@ textarea {
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  border: 1.4px solid #5a1f9f;
+  border: 1.4px solid #5A1F9F;
 }
 
 .palette2 {
@@ -143,7 +136,7 @@ textarea {
   text-align: left;
   font-size: larger;
   padding: 10px;
-  border: 1.4px solid #5a1f9f;
+  border: 1.4px solid #5A1F9F;
   border-radius: 5px;
   margin-top: 15px;
 }
@@ -176,7 +169,7 @@ textarea {
   text-align: left;
   font-size: larger;
   padding: 10px;
-  border: 1.4px solid #5a1f9f;
+  border: 1.4px solid #5A1F9F;
   border-radius: 5px;
   margin-top: 15px;
 }
@@ -204,7 +197,7 @@ textarea {
 #generate {
   width: 80%;
   height: 40px;
-  background-color: #aa4bf5;
+  background-color: #AA4BF5;
   color: white;
   border: none;
   cursor: pointer;
@@ -212,7 +205,7 @@ textarea {
 }
 
 #generate:hover {
-  background-color: #ff885b;
+  background-color: #FF885B;
 }
 
 .font .rotation-options {
@@ -220,7 +213,7 @@ textarea {
 }
 
 button {
-  background-color: #aa4bf5;
+  background-color: #AA4BF5;
   text-align: center;
   color: #ffffff;
   border-radius: 5px;
@@ -230,7 +223,7 @@ button {
 }
 
 button:hover {
-  background-color: #ff885b;
+  background-color: #FF885B;
 }
 
 .main-content {
@@ -288,7 +281,7 @@ button:hover {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #ff4d27;
+  background-color: #FF4D27;
   color: white;
   border: none;
   border-radius: 50%;
@@ -298,7 +291,43 @@ button:hover {
 }
 
 #close-exclude-panel:hover {
-  background-color: #aa4bf5;
+  background-color: #AA4BF5;
+}
+
+.common-tags-container {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  overflow-x: auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #AA4BF5 #e0e0e0;
+}
+.common-tags-container::-webkit-scrollbar {
+  height: 8px;
+}
+.common-tags-container::-webkit-scrollbar-thumb {
+  background: #AA4BF5;
+  border-radius: 10px;
+}
+.common-tags-container::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.common-tag {
+  background-color: #e4e4e4;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+.common-tag:hover {
+  background-color: #FF885B;
 }
 
 #tags-selection {
@@ -311,7 +340,7 @@ button:hover {
 .tag {
   display: flex;
   align-items: center;
-  background-color: #aa4bf5;
+  background-color: #AA4BF5;
   color: white;
   padding: 5px 10px;
   border-radius: 20px;
@@ -329,6 +358,33 @@ button:hover {
 
 .tag .remove-tag:hover {
   font-size: 16px;
+}
+
+.commonwords {
+  margin-top: 10%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+}
+
+.commonwords-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.commonwords h4 {
+  text-align: center;
+  margin-bottom: -5px;
+  margin-top: 0px;
+  text-decoration: underline;
 }
 
 .download-panel {
@@ -418,7 +474,7 @@ button:hover {
 }
 
 #close-upload-panel {
-  background-color: #ff4d27;
+  background-color: #FF4D27;
   color: white;
   border: none;
   border-radius: 50%;
@@ -428,7 +484,7 @@ button:hover {
 }
 
 #close-upload-panel:hover {
-  background-color: #aa4bf5;
+  background-color: #AA4BF5;
 }
 
 .drop-zone {
@@ -448,7 +504,11 @@ button:hover {
   height: auto;
 }
 
-@media only screen and (max-width: 600px) {
+.error {
+  border: 2px solid red;
+}
+
+@media only screen and (max-width: 800px) {
   .container {
     flex-direction: column;
   }
@@ -459,8 +519,40 @@ button:hover {
     order: 3;
   }
 
+  .word-cloud {
+    height: 30hv;
+    width: 100wv;
+  }
+
+  .main-content {
+    height: 30%;
+    width: 100%;
+  }
+
   .exclude-words-panel {
+    top: 375px;
     left: -300px;
+    width: 250px;
+    height: 34%;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: left 0.4s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .exclude-words-panel.open {
+    left: 0;
+  }
+
+  .upload-panel {
+    width: 80%;
+    height: 50%;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
   }
 
   .main-content {
@@ -470,5 +562,18 @@ button:hover {
 
   .download-btn {
     order: 2;
+    margin-bottom: 300px;
+    left: 10px;
+  }
+
+  .download-panel {
+    left: -200px;
+    bottom: 280px;
+    transition: left 0.2s ease-in-out;
+  }
+
+  .download-panel.open {
+    bottom: 280px;
+    left: 0;
   }
 }
