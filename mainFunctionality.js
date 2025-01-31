@@ -114,7 +114,7 @@ function generateWordCloud(text) {
   // Word assigned as value to key 'text' and size of the word (by frequency of the word) assigned as value to key 'size'
   let myWords = Object.keys(filteredWordCounts).map((word) => ({
     text: word,
-    size: wordCounts[word] * 10,
+    size: wordCounts[word] * 20,
   }));
 
   console.log("aaa", myWords);
