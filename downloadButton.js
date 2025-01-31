@@ -1,6 +1,6 @@
-import { jsPDF } from "jspdf"; // Imports jsPDF library
+import { jsPDF } from "jspdf";
 
-// When user clicks download button, word cloud is downloaded as PDF
+// When the user hits the download button, the word cloud saves as a PDF
 document.getElementById("pdf").addEventListener("click", function () {
   const wordCloudElement = document.getElementById("my_dataviz"); // Gets word cloud element
 
@@ -17,7 +17,7 @@ document.getElementById("pdf").addEventListener("click", function () {
     return;
   }
 
-  // Use html2canvas to capture the element as a canvas to download word cloud as  PDF
+  // Use html2canvas to capture the element as a canvas to download word cloud as PDF
   html2canvas(wordCloudElement)
     .then(function (canvas) {
       const imgURL = canvas.toDataURL("image/png"); // Create an image URL from the canvas
@@ -33,8 +33,8 @@ document.getElementById("pdf").addEventListener("click", function () {
       const imgHeight = canvas.height;
 
       // Define the PDF dimensions (A4 landscape)
-      const pdfWidth = 297; // A4 width in mm
-      const pdfHeight = 210; // A4 height in mm
+      const pdfWidth = 297; 
+      const pdfHeight = 210; 
 
       // Calculate scale factor to fit image inside the PDF
       const scaleFactor = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
@@ -84,7 +84,7 @@ document.getElementById("png").addEventListener("click", function () {
       const link = document.createElement("a"); // Anchor element is created
 
       link.href = imgURL; //Creates a url which points to the PNG
-      link.download = "word-cloud.png"; // Set the filename
+      link.download = "word-cloud.png"; 
 
       link.click();
     })
