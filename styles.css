@@ -42,10 +42,23 @@ textarea {
   border: 1.4px dashed #5A1F9F;
   border-radius: 5px;
   padding: 10px;
+  resize: none;
 }
 
-.text {
-  height: 250px;
+.textarea-container {
+  position: relative;
+}
+
+#word-input {
+  padding-bottom: 30px; 
+}
+
+#word-counter {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  font-size: 14px;
+  color: #333;
 }
 
 .import {
@@ -55,20 +68,13 @@ textarea {
   gap: 10px;
 }
 
-#my_dataviz {
-  display: none; 
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
 .import, .text, .color-palette, .max, .rotation, .font {
   padding: 10px; 
   border-radius: 5px; 
 }
 
 .word-import {
-  resize: horizontal;
+  resize: none;
 }
 
 .import-method {
@@ -91,12 +97,13 @@ textarea {
 .color-palette {
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 20px;
   align-items: center;
 }
 
 .palette1 {
   display: flex;
+  margin-left: 20px;
   flex-direction: column;
   gap: 10px;
   padding: 15px;
@@ -127,8 +134,32 @@ textarea {
 }
 
 .max {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px; 
   font-size: larger;
+
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px; 
+  border-radius: 5px; 
+  width: 150px; 
+  height: 100px;  
+  border: 1.4px solid  #5A1F9F;
+}
+
+.item label {
+  margin-bottom: 5px; 
+}
+
+.item input, .item button {
+  width: 100%; 
 }
 
 .font {
@@ -229,8 +260,15 @@ button:hover {
   justify-content: center;
 }
 
+#my_dataviz {
+  display: none; 
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
 .word-cloud {
-  width: 100%;
+  width: 90%;
   height: 80%;
   border: 2px dashed #ccc;
   display: flex;
@@ -573,3 +611,4 @@ button:hover {
     left: 0;
   }
 }
+
