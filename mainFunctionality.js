@@ -247,3 +247,12 @@ document.getElementById("generate").addEventListener("click", (generate) => {
     wordFrequency.classList.remove("error");
   }
 });
+
+
+//word count under text box
+
+document.getElementById('word-input').addEventListener('input', function() {
+  const text = this.value;
+  const wordCount = text.trim().split(/\s+/).length;
+  document.getElementById('word-counter').innerText = `${wordCount} / `;
+}); 
