@@ -249,10 +249,17 @@ document.getElementById("generate").addEventListener("click", (generate) => {
 });
 
 
-//word count under text box
-
 document.getElementById('word-input').addEventListener('input', function() {
-  const text = this.value;
-  const wordCount = text.trim().split(/\s+/).length;
-  document.getElementById('word-counter').innerText = `${wordCount} / `;
-}); 
+  const text = this.value.trim();  //Spaces will be removed
+  const wordCount = text.split(/\s+/).filter(Boolean).length;  // empty strings to be filtered
+
+  // Get max word count  (even if it has been changed)
+  const maxWords = parseInt(document.getElementById('max-words').value, 10);
+
+  // Update the display for the word cloud
+  if (wordCount > maxWords) {
+    document.getElementById('word-counter').innerText = `${maxWords} / ${maxWords}`;  // Limit the counter
+  } else {
+    document.getElementById('word-counter').innerText = `${wordCount} / ${maxWords}`;  // Show latest word count
+  }
+});
