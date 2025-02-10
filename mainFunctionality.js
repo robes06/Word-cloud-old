@@ -65,26 +65,19 @@ selectElement.addEventListener("change", (event) => {
   console.log("Select font is", selectedFont);
 });
 
-// Checks if the max words number input changes
-document.getElementById("max-words").onchange = function () {
-  myFunction();
-};
-let maxWords = document.getElementById("max-words").value;
 
-function myFunction() {
-  maxWords = document.getElementById("max-words").value;
-}
 
 // Function to generate word cloud
 function generateWordCloud(text) {
-  let wordsArray = text.split(/[^\w]+/); // Removes non-words
+  // Remove commas and split the text by whitespace
+  let wordsArray = text.replace(/,/g, '').trim().split(/\s+/); // Remove commas
 
   let excludedWords = JSON.parse(localStorage.getItem("tags")) || [];
-  console.log(excludedWords);
   let filteredWords = wordsArray.filter(
     (word) => !excludedWords.includes(word.toLowerCase())
-  ); //Filters the words based on if excludedWords contains any words
+  ); // Filters out excluded words
 
+  
   // Get max repetitions from the input field by user
   let maxRepetitions = parseInt(
     document.getElementById("max-repetitions").value,
@@ -248,18 +241,10 @@ document.getElementById("generate").addEventListener("click", (generate) => {
   }
 });
 
+document.getElementById("word-input").addEventListener("input", function () {
+  const text = this.value.replace(/,/g, '').trim(); // Remove commas
+  const wordCount = text.split(/\s+/).filter(Boolean).length; // Count words
 
-document.getElementById('word-input').addEventListener('input', function() {
-  const text = this.value.trim();  //Spaces will be removed
-  const wordCount = text.split(/\s+/).filter(Boolean).length;  // empty strings to be filtered
-
-  // Get max word count  (even if it has been changed)
-  const maxWords = parseInt(document.getElementById('max-words').value, 10);
-
-  // Update the display for the word cloud
-  if (wordCount > maxWords) {
-    document.getElementById('word-counter').innerText = `${maxWords} / ${maxWords}`;  // Limit the counter
-  } else {
-    document.getElementById('word-counter').innerText = `${wordCount} / ${maxWords}`;  // Show latest word count
-  }
+  // Update the display for the word count
+  document.getElementById("word-counter").innerText = `${wordCount}`;
 });
