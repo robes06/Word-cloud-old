@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
     <title>Word Cloud Generator</title>
+
   </head>
 
   <body>
@@ -44,7 +45,7 @@
                 name="import-method"
                 class="import-text"
                 id="import-text"
-              />Add your own text:
+              />Add/Edit (Max 2000 characters)
             </label>
             <div class="textarea-container">
               <textarea
@@ -52,20 +53,10 @@
                 placeholder="Enter your text here..."
                 rows="13"
               ></textarea>
-              <div id="word-counter">0 / 500</div>
+              <div id="word-counter">0</div>
             </div>
           </div>
           <div class="max">
-            <div class="item">
-              <label for="max-words">Max Words:</label>
-              <input
-                type="number"
-                id="max-words"
-                min="1"
-                max="1000"
-                value="500"
-              />
-            </div>
             <div class="item">
               <label for="max-repetitions">Word Frequency:</label>
               <input type="number" id="max-repetitions" value="3" min="1" max="100" />
@@ -253,7 +244,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="MainFunctionality.js"></script>
+    <script type="module" src="mainFunctionality.js"></script>
     <script type="module" src="downloadButton.js"></script>
     <script type="module" src="interactionHandler.js"></script>
   </body>
